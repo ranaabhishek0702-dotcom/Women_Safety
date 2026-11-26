@@ -1,0 +1,155 @@
+import { SimulationScenario, EmergencyContact } from '../types';
+
+export const SAMPLE_FEEDS: SimulationScenario[] = [
+  {
+    id: 'scenario-surrounded',
+    name: 'Scenario A: Woman Surrounded by Men',
+    tagline: 'High-density male cluster encircling 1 female',
+    description: '1 Female surrounded within 2 meters by 4 Males at an unlit bus stop. Triggers CRITICAL surrounded alert and patrol dispatch.',
+    timeOfDay: 'NIGHT',
+    simulatedTime: '23:22',
+    location: 'North Ring Bus Terminal West Gate (Camera 102)',
+    cameraId: 'BEL-CAM-102-HD',
+    persons: [
+      {
+        id: 'p-f1',
+        gender: 'female',
+        confidence: 0.96,
+        bbox: { x: 42, y: 35, width: 16, height: 42 },
+        isSurrounded: true,
+      },
+      {
+        id: 'p-m1',
+        gender: 'male',
+        confidence: 0.92,
+        bbox: { x: 24, y: 32, width: 15, height: 44 },
+        distanceToNearestFemale: 0.18,
+      },
+      {
+        id: 'p-m2',
+        gender: 'male',
+        confidence: 0.94,
+        bbox: { x: 60, y: 34, width: 16, height: 45 },
+        distanceToNearestFemale: 0.19,
+      },
+      {
+        id: 'p-m3',
+        gender: 'male',
+        confidence: 0.89,
+        bbox: { x: 34, y: 22, width: 14, height: 38 },
+        distanceToNearestFemale: 0.16,
+      },
+      {
+        id: 'p-m4',
+        gender: 'male',
+        confidence: 0.91,
+        bbox: { x: 48, y: 52, width: 16, height: 40 },
+        distanceToNearestFemale: 0.17,
+      },
+    ],
+  },
+  {
+    id: 'scenario-lone-woman',
+    name: 'Scenario B: Lone Woman at Night',
+    tagline: 'Solitary female walking at 23:45 with zero companions',
+    description: '1 Female walking alone in an empty metro station underpass during late night hours. Triggers HIGH Lone Woman Alert & proactive monitoring.',
+    timeOfDay: 'NIGHT',
+    simulatedTime: '23:45',
+    location: 'Sector 18 Metro Underpass Path (Camera 104)',
+    cameraId: 'BEL-CAM-104-NIGHTVISION',
+    persons: [
+      {
+        id: 'p-f1',
+        gender: 'female',
+        confidence: 0.95,
+        bbox: { x: 40, y: 30, width: 18, height: 48 },
+        isLoneWoman: true,
+      },
+    ],
+  },
+  {
+    id: 'scenario-gesture-sos',
+    name: 'Scenario C: SOS Distress Hand Signal',
+    tagline: 'Woman signaling universal help gesture to camera',
+    description: 'Subject performs the international Signal for Help: Palm forward -> Thumb tuck -> Fingers curl into fist. Instant emergency broadcast.',
+    timeOfDay: 'NIGHT',
+    simulatedTime: '23:10',
+    location: 'University South Gate Alley (Camera 088)',
+    cameraId: 'BEL-CAM-088-PTZ',
+    gesture: 'SIGNAL_FOR_HELP',
+    gestureStage: 3,
+    persons: [
+      {
+        id: 'p-f1',
+        gender: 'female',
+        confidence: 0.97,
+        bbox: { x: 38, y: 25, width: 24, height: 55 },
+      },
+    ],
+  },
+  {
+    id: 'scenario-balanced-safe',
+    name: 'Scenario D: Daylight Balanced Crowd',
+    tagline: 'Normal gender distribution with balanced ratio',
+    description: '3 Females and 3 Males walking in a well-lit civic center during daylight. System status remains SAFE (Score: 94/100).',
+    timeOfDay: 'DAY',
+    simulatedTime: '15:30',
+    location: 'Civic Center Boulevard (Camera 012)',
+    cameraId: 'BEL-CAM-012-4K',
+    persons: [
+      { id: 'p-f1', gender: 'female', confidence: 0.93, bbox: { x: 18, y: 35, width: 14, height: 40 } },
+      { id: 'p-f2', gender: 'female', confidence: 0.91, bbox: { x: 36, y: 38, width: 13, height: 38 } },
+      { id: 'p-f3', gender: 'female', confidence: 0.95, bbox: { x: 74, y: 32, width: 15, height: 42 } },
+      { id: 'p-m1', gender: 'male', confidence: 0.92, bbox: { x: 24, y: 34, width: 14, height: 42 } },
+      { id: 'p-m2', gender: 'male', confidence: 0.88, bbox: { x: 55, y: 36, width: 15, height: 41 } },
+      { id: 'p-m3', gender: 'male', confidence: 0.90, bbox: { x: 88, y: 33, width: 13, height: 39 } },
+    ],
+  },
+  {
+    id: 'scenario-dispersed-night',
+    name: 'Scenario E: Moderate Night Loitering',
+    tagline: '1 Female, 3 Dispersed Males at distance',
+    description: '1 Female walking on footpath while 3 Males are standing across the street (distance > 6m). System issues MODERATE advisory.',
+    timeOfDay: 'NIGHT',
+    simulatedTime: '22:15',
+    location: 'Tech Park Rear Perimeter (Camera 045)',
+    cameraId: 'BEL-CAM-045-IR',
+    persons: [
+      { id: 'p-f1', gender: 'female', confidence: 0.94, bbox: { x: 22, y: 40, width: 15, height: 42 } },
+      { id: 'p-m1', gender: 'male', confidence: 0.87, bbox: { x: 65, y: 30, width: 12, height: 36 }, distanceToNearestFemale: 0.45 },
+      { id: 'p-m2', gender: 'male', confidence: 0.85, bbox: { x: 78, y: 32, width: 13, height: 38 }, distanceToNearestFemale: 0.55 },
+      { id: 'p-m3', gender: 'male', confidence: 0.90, bbox: { x: 86, y: 28, width: 11, height: 35 }, distanceToNearestFemale: 0.65 },
+    ],
+  }
+];
+
+export const DEFAULT_EMERGENCY_CONTACTS: EmergencyContact[] = [
+  {
+    id: 'ec-1',
+    name: 'Women Safety Helpline (National)',
+    relation: 'Official Helpline',
+    phone: '1091',
+    isPrimary: true,
+  },
+  {
+    id: 'ec-2',
+    name: 'Police Emergency Response Support',
+    relation: 'Emergency Services',
+    phone: '112',
+    isPrimary: true,
+  },
+  {
+    id: 'ec-3',
+    name: 'BEL SBU Women Safety Control Room',
+    relation: 'Central Command',
+    phone: '+91-11-2800-BEL-WSA',
+    isPrimary: true,
+  },
+  {
+    id: 'ec-4',
+    name: 'Pooja (Sister / Guardian)',
+    relation: 'Family',
+    phone: '+91 98765 43210',
+    isPrimary: false,
+  }
+];

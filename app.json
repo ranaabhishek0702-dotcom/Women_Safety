@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Women Safety Analytics",
+    "slug": "women-safety-analytics",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0d1117"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Women Safety Analytics requires camera access for real-time person detection, gender classification, and distress gesture recognition.",
+        "NSLocationWhenInUseUsageDescription": "Women Safety Analytics requires location access to map incident hotspots and provide emergency GPS coordinates during SOS alerts."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0d1117"
+      },
+      "permissions": [
+        "CAMERA",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "VIBRATE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "organization": "Bharat Electronics Limited (BEL)",
+      "department": "SBU-BEL",
+      "projectYear": "2024",
+      "solutionCategory": "Software / AI Surveillance"
+    }
+  }
+}
